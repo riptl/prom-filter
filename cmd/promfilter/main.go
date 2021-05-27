@@ -61,9 +61,12 @@ func main() {
 				}
 			}
 			if !ok {
-				http.Error(wr, "fuck you", http.StatusForbidden)
+				http.Error(wr, "unknown query", http.StatusForbidden)
 				return
 			}
+		default:
+			http.Error(wr, "unsupported operation", http.StatusForbidden)
+			return
 		}
 		// Let through the original request.
 		proxy.ServeHTTP(wr, req)
