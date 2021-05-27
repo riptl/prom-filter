@@ -1,0 +1,13 @@
+[
+  {
+    "query": "rate(node_network_transmit_bytes_total{device=\"$node\",job=\"$job\"}[20s])*100",
+    "vars": {
+      "node": {
+        "any": ["eno1", "eno2"]
+      },
+      "job": {
+        "any": ["node"]
+      }
+    }
+  }
+]
